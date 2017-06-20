@@ -1,0 +1,59 @@
+{% extends "AppBundle:Blog:sidebarLayout.html.twig" %}
+
+{% block pageTitle %}
+    Dziennik | {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+
+    <article class="col-md-8 journal">
+        <h1>Domowy dzienniczek inwestora</h1>
+        <p>Na początku swojej przygoty z inwestowaniem postanowiłem, że każdą inwestycję będę zapisywał. W ten sposób powstał poniższy dziennik, który prezentuje moją aktywność na giełdzie. Przez ostatnie pare miesięcy wiele się działo. Na zmianę raz zyskiwałem, raz traciłem.</p>
+        <h4>Wszystkich inwestycji: {{ history|length }}</h4>
+
+        {#<pre>{{ dump(history) }}</pre>#}
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Spółka</th>
+                    <th>Data rozpoczęcia</th>
+                    <th>Śr. kurs nabycia</th>
+                    <th>Ilość</th>
+                    <th>Data zakończenia</th>
+                    <th>Śr. kurs sprzedaży</th>
+                    <th>Wynik</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in history %}
+                    {% if row['end_date'] is not null %}
+                        {% set result = (row.selling_price*row.quantity)-(row.purchase_price*row.quantity) %}
+
+
+                        {% if result>0 %}
+                        <tr class="success">
+                        {% else %}
+                        <tr class="danger">
+                        {% endif %}  
+                    {% else %}
+                        <tr>
+                            {% endif %}
+                            <td>{{ row.company_name|upper }}</td>
+                            <td>{{ row.start_date|date('d.m.Y') }}</td>
+                            <td>{{ row.purchase_price|number_format(2, ',', ' ') }} zł</td>
+                            <td>{{ row.quantity|number_format(0, ',', ' ') }}</td>
+                            <td>{{ row['end_date'] is not null ? row['end_date']|date('d.m.Y') : "---" }}</td>
+                            <td>{{ row.selling_price is not null ? row.selling_price|number_format(2, ',', ' ')~" zł" : "---" }}</td>
+                            <td>{{ row['end_date'] is not null ? result|number_format(2, ',', ' ')~" zł" : "---" }}</td>
+                        </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">brak wpisów w historii</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </article>
+
+{% endblock %}

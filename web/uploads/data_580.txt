@@ -1,0 +1,22 @@
+Array
+(
+    [name] => Adrian Wii
+    [email] => adrian.widlak@interia.pl
+    [sex] => m
+    [birthday] => DateTime Object
+        (
+            [date] => 1902-05-03 00:00:00.000000
+            [timezone_type] => 3
+            [timezone] => Europe/Warsaw
+        )
+
+    [country] => AU
+    [course] => ar
+    [invest] => Array
+        (
+            [0] => a
+            [1] => o
+        )
+
+    [comments] => ddddd
+)

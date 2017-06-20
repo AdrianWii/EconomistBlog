@@ -1,0 +1,13 @@
+{% macro widget(header, list, url, button) %}
+    
+<section class="widget">
+    <h2>{{ header }}</h2>
+    <ul>
+        {% for row in list %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+    <p><a class="btn btn-default" href="{{ url }}" role="button">{{ button }}  &raquo;</a></p>
+</section>
+        
+{% endmacro %}

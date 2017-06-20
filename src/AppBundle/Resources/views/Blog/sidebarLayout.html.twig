@@ -1,0 +1,28 @@
+{% extends "AppBundle::base.html.twig" %}
+{% block body %}
+
+    {% block stylesheet %}    
+        {{ parent() }}
+        <!-- Custom styles for sidebar -->
+        <link href="{{ asset('bundles/app/css/sidebar.css') }}" rel="stylesheet">
+    {% endblock %}   
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row extra-padding">
+            {% block content %}    
+
+            {% endblock %}   
+            <div class="col-md-3 pull-right sidebar">
+                {% include "AppBundle:Blog/Widgets:firstWidget.html.twig" %}
+                {#{% include "AppBundle:Blog/Widgets:secondWidget.html.twig" %}#}
+                {{ render(controller("AppBundle:Blog:secondWidget")) }}
+                {#{% include "AppBundle:Blog/Widgets:thirdWidget.html.twig" %}#}
+                {{ render(controller("AppBundle:Blog:thirdWidget")) }}
+
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+
+{% endblock %}

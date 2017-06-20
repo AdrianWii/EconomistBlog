@@ -1,0 +1,21 @@
+{% extends "AppBundle:Blog:sidebarLayout.html.twig" %}
+
+{% if form is not null %}  
+    {% form_theme form "AppBundle:Form:form_theme.html.twig" %}
+{% endif %}
+
+{% block pageTitle %}
+    Edycja rejestracji | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <article class="col-md-8 contact">
+
+        <h1>Edycja rejestracji: {{ row.name }}</h1>
+
+                   {{ form(form, {'attr': {'novalidate': 'true'}}) }}
+
+    </article>
+
+{% endblock %}

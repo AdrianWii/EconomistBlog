@@ -1,0 +1,27 @@
+{% extends "AppBundle:Blog:sidebarLayout.html.twig" %}
+
+{% if form is not null %}  
+    {% form_theme form "AppBundle:Form:form_theme.html.twig" %}
+{% endif %}
+
+{% block pageTitle %}
+    Rejestracja | {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+
+    <article class="col-md-8">
+        <h1>Rejestracja</h1>
+
+        {% if form is not null %}    
+            {{ form(form, {'attr': {'novalidate': 'true'}}) }}
+        {% else %}
+            <div class="panel panel-success">
+                <div class="panel-heading">Jesteś zarejestrowany na szkoleniu!</div>
+                <div class="panel-body">Przetwarzmy Twoje zgłoszenie!</div>
+            </div>
+        {% endif %}
+    </article>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block body %}
+
+
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="text">
+                <h1>Adrian Widłak</h1>
+                <p>
+                    SOME INFO HERE...
+                </p>
+                <p><a class="btn btn-primary btn-lg" href="https://pl.linkedin.com/in/adrian-wid%C5%82ak-0b5b61b9" role="button">SEE MORE &raquo;</a></p>
+            </div>
+            <img class="bull img-circle" src="{{ asset('bundles/app/img/profile.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+
+            <div class="col-md-4">
+                {% include "AppBundle:Blog/Widgets:firstWidget.html.twig" %}
+            </div>
+
+            <div class="col-md-4">
+                {#{% include "AppBundle:Blog/Widgets:secondWidget.html.twig" %}#}
+                {{ render(controller("AppBundle:Blog:secondWidget")) }}
+            </div>
+
+            <div class="col-md-4">
+                {#{% include "AppBundle:Blog/Widgets:thirdWidget.html.twig" %}#}
+                {{ render(controller("AppBundle:Blog:thirdWidget")) }}
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+{% endblock %}

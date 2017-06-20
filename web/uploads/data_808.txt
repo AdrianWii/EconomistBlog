@@ -1,0 +1,22 @@
+Array
+(
+    [name] => Adrian Widlak
+    [email] => adrian.widlak@interia.pl
+    [sex] => m
+    [birthday] => DateTime Object
+        (
+            [date] => 1899-01-01 00:00:00.000000
+            [timezone_type] => 3
+            [timezone] => Europe/Warsaw
+        )
+
+    [country] => AC
+    [course] => am
+    [invest] => Array
+        (
+            [0] => a
+            [1] => o
+        )
+
+    [comments] => d
+)

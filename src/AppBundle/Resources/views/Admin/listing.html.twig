@@ -1,0 +1,45 @@
+{% extends "AppBundle:Blog:sidebarLayout.html.twig" %}
+
+{% block pageTitle %}
+   Lista rejestracji | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <article class="col-md-8 contact">
+
+        <h1>Lista rejestracji</h1>
+        
+        <table class="table table-striped"> 
+        <thead> 
+            <tr> 
+                <th>#</th> 
+                <th>Imię i nazwisko</th> 
+                <th>Kraj</th> 
+                <th>Kurs</th>
+                <th></th>
+            </tr> 
+        </thead> 
+        <tbody> 
+            {% for entry in rows %}
+                <tr> 
+                    <td>{{entry.id}}</td> 
+                    <td>{{entry.name}}</td>
+                    <td>{{entry.country}}</td> 
+                    <td>{{entry.course}}</td> 
+                    <td>
+                        <a href="{{ path('blog_admin_delete', {'id': entry.id}) }}" class="btn btn-sm btn-danger">Usuń</a>
+                        <a href="{{ path('blog_admin_details', {'id': entry.id}) }}" class="btn btn-sm btn-success">Edytuj</a>
+                    </td> 
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Brak rejestracji</td>
+                </tr>
+            {% endfor %}
+        </tbody> 
+    </table>
+
+    </article>
+
+{% endblock %}
